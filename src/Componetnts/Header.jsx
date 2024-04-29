@@ -39,7 +39,7 @@ const Header = () => {
     <>
       <li>
         <NavLink
-          className="btn btn-ghost rounded-full px-6 hover:bg-sky-400 hover:text-white"
+          className="btn btn-ghost rounded-full px-6 hover:bg-green-400 hover:text-white"
           to="/"
         >
           Home
@@ -47,24 +47,24 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          className="btn btn-ghost rounded-full px-6 hover:bg-sky-400 hover:text-white"
-          to="/h"
+          className="btn btn-ghost rounded-full px-6 hover:bg-green-400 hover:text-white"
+          to="/alltourist"
         >
           All Tourists Spot
         </NavLink>
       </li>
       <li>
         <NavLink
-          className="btn btn-ghost rounded-full px-6 hover:bg-sky-400 hover:text-white"
-          to="/h"
+          className="btn btn-ghost rounded-full px-6 hover:bg-green-400 hover:text-white"
+          to="/addtourist"
         >
           Add Tourists Spot
         </NavLink>
       </li>
       <li>
         <NavLink
-          className="btn btn-ghost rounded-full px-6 hover:bg-sky-400 hover:text-white"
-          to="/h"
+          className="btn btn-ghost rounded-full px-6 hover:bg-green-400 hover:text-white"
+          to="/mylist"
         >
           My List
         </NavLink>
@@ -78,7 +78,11 @@ const Header = () => {
       <div className="navbar py-4">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost rounded-2xl lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -96,12 +100,14 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box gap-2 w-52"
             >
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl">Tourism Nexus</a>
+          <a href="/" className="font-bold cursor-pointer text-2xl">
+            Tourism Nexus
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-2">{links}</ul>
@@ -116,13 +122,13 @@ const Header = () => {
                 <>
                   <NavLink
                     to="/login"
-                    className="btn  btn-ghost  rounded-full px-4 bg-sky-400 hover:bg-sky-400 text-white mr-1 "
+                    className="btn  btn-ghost  rounded-full px-4 bg-green-400 hover:bg-green-400 text-white mr-1 "
                   >
                     Login
                   </NavLink>
                   <NavLink
                     to="/register"
-                    className="btn  btn-ghost  rounded-full px-4 hover:bg-sky-400 hover:text-white "
+                    className="btn  btn-ghost  rounded-full px-4 hover:bg-green-400 hover:text-white "
                   >
                     Register
                   </NavLink>
@@ -131,17 +137,33 @@ const Header = () => {
             </>
           ) : (
             <>
-              <div className="avatar mr-3">
-                <div className="w-14 rounded-full  ring-2 ring-neutral-400">
+              <div className="avatar mr-3 dropdown dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="w-14 rounded-full  ring-2 ring-neutral-400"
+                >
                   <img src={user.photoURL} />
                 </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow rounded-3xl"
+                >
+                  <li>
+                    <a className="text-lg font-semibold btn-disabled rounded-full px-6">
+                      {user.displayName}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={handleLogOut}
+                      className="btn  btn-ghost  rounded-full px-4 bg-orange-400 hover:bg-orange-500 text-white mr-1 "
+                    >
+                      Logout
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <a
-                onClick={handleLogOut}
-                className="btn  btn-ghost  rounded-full px-4 bg-orange-400 hover:bg-orange-500 text-white mr-1 "
-              >
-                Logout
-              </a>
             </>
           )}
           <label className="swap swap-rotate ml-3 ">
