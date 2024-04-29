@@ -10,7 +10,6 @@ const Header = () => {
   const { user, logOut, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleToggle = (e) => {
-    console.log("toggled");
     if (e.target.checked) {
       setTheme("dark");
     } else {
