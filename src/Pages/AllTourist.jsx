@@ -37,9 +37,9 @@ const AllTourist = () => {
           </ul>
         </div>
       </div>
-      <div className="mt-10">
+      <div className="lg:mt-10">
         {spots ? (
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             {sortedSpots.map((spot) => (
               <SpotCard key={spot._id} spot={spot}></SpotCard>
             ))}

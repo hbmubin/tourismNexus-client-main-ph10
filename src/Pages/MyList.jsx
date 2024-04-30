@@ -44,7 +44,7 @@ const MyList = () => {
   return (
     <div>
       <div>
-        <div className="overflow-x-auto w-3/5 mx-auto ">
+        <div className="overflow-x-auto lg:w-3/5 mx-auto ">
           {modifiedMyList.length > 0 ? (
             <table className="table table-zebra">
               <thead>

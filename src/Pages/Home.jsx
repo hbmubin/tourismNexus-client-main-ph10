@@ -41,10 +41,11 @@ const Home = () => {
                 className="hero border-2 border-neutral-600  h-full rounded-[50px] overflow-hidden"
                 style={{
                   backgroundImage: "url(https://i.ibb.co/myqPwL4/bd.jpg)",
+                  zIndex: 99,
                 }}
               >
                 <div className="hero-overlay bg-opacity-30 "></div>
-                <div className="hero-content  mt-52 text-center text-neutral-content">
+                <div className="hero-content  lg:mt-52 text-center text-neutral-content">
                   <div className="max-w-2xl">
                     <h1 className="mb-5 text-5xl font-bold">Bangladesh</h1>
                     <p className="mb-5">
@@ -121,7 +122,7 @@ const Home = () => {
       </div>
       <div>
         <div ref={ref} className="text-center text-3xl font-semibold ">
-          Top Spots of{" "}
+          Top Spots of
           <span className="text-green-500">
             <Typewriter
               words={[" South Asia"]}
@@ -136,7 +137,7 @@ const Home = () => {
         </div>
         <hr className="h-[3px] w-full bg-neutral-400 mb-10 mt-4" />
         {spots ? (
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             {limitedSpots.map((spot) => (
               <SpotCard key={spot._id} spot={spot}></SpotCard>
             ))}

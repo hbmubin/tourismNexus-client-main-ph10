@@ -13,7 +13,7 @@ const Country = () => {
         All Tourist Spots of {name}
       </div>
       <hr className="h-[2px] w-full bg-neutral-600 mb-10 mt-4" />
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-6">
         {countrySpots.map((spot) => (
           <CountrySpot key={spot._id} spot={spot}></CountrySpot>
         ))}

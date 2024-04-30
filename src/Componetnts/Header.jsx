@@ -72,13 +72,19 @@ const Header = () => {
     </>
   );
 
+  const [tab, setTab] = useState(false);
+  const check = (tabTap) => {
+    setTab(tabTap);
+  };
+
   return (
     <div>
       <Toaster></Toaster>
-      <div className="navbar py-4">
+      <div className={`navbar lg:py-4 ${tab ? " pb-64" : ""} `}>
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown ">
             <div
+              onClick={() => check(!tab)}
               tabIndex={0}
               role="button"
               className="btn btn-ghost rounded-2xl lg:hidden"
@@ -99,12 +105,16 @@ const Header = () => {
               </svg>
             </div>
             <ul
+              style={{
+                zIndex: 99,
+              }}
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box gap-2 w-52"
+              className="menu menu-sm  dropdown-content mt-3 z-[9] p-2 shadow bg-base-100 rounded-box gap-2 w-52"
             >
               {links}
             </ul>
           </div>
+
           <a href="/" className="font-bold cursor-pointer text-2xl">
             Tourism
             <span className="text-green-500">

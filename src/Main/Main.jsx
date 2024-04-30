@@ -6,9 +6,9 @@ import { Fade } from "react-awesome-reveal";
 const Main = () => {
   return (
     <div>
-      <div className="w-[1344px] mx-auto ">
+      <div className="lg:w-[1344px] mx-auto ">
         <Fade>
-          <Header></Header>
+          <Header className="pb-10"></Header>
         </Fade>
         <Outlet></Outlet>
       </div>

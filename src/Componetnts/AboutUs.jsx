@@ -1,14 +1,14 @@
 const AboutUs = () => {
   return (
-    <div className="my-12 mt-16 h-[50vh]">
+    <div className="my-12 mt-16 px-2">
       <h2 className="text-3xl font-semibold mb-6 text-center">About Us</h2>
-      <hr className="h-[2px] w-full bg-neutral-400 mb-2" />
-      <div className="flex items-center gap-6">
-        <div className="flex items-center justify-between h-[50vh]">
+      <hr className="h-[2px] w-full bg-neutral-400 mb-6" />
+      <div className="lg:flex  gap-6 max-h-full">
+        <div className="flex justify-center lg:mb-0 mb-6">
           <img
             src="/public/letter-n-alphabet-natural-green-icons-leaf-logo-free-vector2.jpg"
             alt="About Us"
-            className=" rounded-lg w-[400px]"
+            className=" rounded-lg w-72 "
           />
         </div>
         <div>
