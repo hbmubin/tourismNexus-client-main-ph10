@@ -148,7 +148,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <div className="avatar mr-3 dropdown dropdown-hover">
+              <div className="avatar mr-3 dropdown dropdown-left dropdown-hover">
                 <div
                   tabIndex={0}
                   role="button"
@@ -156,24 +156,23 @@ const Header = () => {
                 >
                   <img src={user.photoURL} />
                 </div>
-                <ul
+                <div
                   tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow rounded-3xl"
+                  style={{ zIndex: 99 }}
+                  className="dropdown-content z-[1]  menu p-2 rounded-3xl bg-transparent"
                 >
-                  <li>
+                  <div className="flex items-center">
                     <a className="text-lg font-semibold btn-disabled rounded-full px-6">
                       {user.displayName}
                     </a>
-                  </li>
-                  <li>
                     <a
                       onClick={handleLogOut}
                       className="btn  btn-ghost  rounded-full px-4 bg-orange-400 hover:bg-orange-500 text-white mr-1 "
                     >
                       Logout
                     </a>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
             </>
           )}

@@ -9,6 +9,8 @@ import SpotCard from "./SpotCard";
 import Countries from "./Countries";
 import { Typewriter } from "react-simple-typewriter";
 import { Fade } from "react-awesome-reveal";
+import TravelTips from "../Componetnts/TravelTips";
+import AboutUs from "../Componetnts/AboutUs";
 
 const Home = () => {
   const spots = useLoaderData();
@@ -174,6 +176,13 @@ const Home = () => {
         <div>
           <Countries></Countries>
         </div>
+      </div>
+
+      <div>
+        <TravelTips />
+      </div>
+      <div>
+        <AboutUs></AboutUs>
       </div>
     </div>
   );
