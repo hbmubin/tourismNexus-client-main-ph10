@@ -18,6 +18,11 @@ const Country = () => {
           <CountrySpot key={spot._id} spot={spot}></CountrySpot>
         ))}
       </div>
+      {countrySpots.length < 1 && (
+        <div className="text-center text-2xl font-semibold text-neutral-600">
+          No Spot added to this Country{" "}
+        </div>
+      )}
     </div>
   );
 };
