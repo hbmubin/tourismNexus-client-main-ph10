@@ -1,11 +1,24 @@
-import { useContext } from "react";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Provider/AuthProvider";
 
-const AddTourist = () => {
-  const { user } = useContext(AuthContext);
+const UpdateSpot = () => {
+  const spot = useLoaderData();
+  const [modifiedSpot, SetModifiedSpot] = useState(spot);
+  const {
+    _id,
+    spotName,
+    photo,
+    description,
+    country,
+    location,
+    cost,
+    season,
+    travel,
+    visitors,
+  } = modifiedSpot;
 
-  const handleAddSpot = (e) => {
+  const handleUpdateSpot = (e) => {
     e.preventDefault();
     const form = e.target;
     const photo = form.photo.value;
@@ -17,9 +30,8 @@ const AddTourist = () => {
     const season = form.season.value;
     const travel = form.travel.value;
     const visitors = form.visitors.value;
-    const email = form.email.value;
-    const username = form.username.value;
-    const newSpot = {
+
+    const updatedSpot = {
       photo,
       spotName,
       country,
@@ -29,25 +41,25 @@ const AddTourist = () => {
       season,
       travel,
       visitors,
-      email,
-      username,
     };
+    console.log(updatedSpot);
 
-    fetch("http://localhost:5000/spot", {
-      method: "POST",
+    fetch(`http://localhost:5000/spot/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newSpot),
+      body: JSON.stringify(updatedSpot),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         e.target.reset();
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
+          SetModifiedSpot(updatedSpot);
           Swal.fire({
             title: "Success!",
-            text: "Successfully added",
+            text: "Successfully Updated",
             icon: "success",
             confirmButtonText: "Ok",
           });
@@ -60,11 +72,11 @@ const AddTourist = () => {
       <div className="hero min-h-screen">
         <div className="hero-content flex-col ">
           <div className="text-center mb-10">
-            <h1 className="text-5xl font-bold">Add New Spot</h1>
+            <h1 className="text-5xl font-bold">Update Spot</h1>
           </div>
           <div className="card shrink-0 w-full border-2 border-neutral-300  ">
             <form
-              onSubmit={handleAddSpot}
+              onSubmit={handleUpdateSpot}
               className="card-body grid grid-cols-2"
             >
               <div className="form-control col-span-2">
@@ -75,7 +87,7 @@ const AddTourist = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Photo URL"
+                  defaultValue={photo}
                   name="photo"
                   className="input input-bordered rounded-full "
                   required
@@ -90,7 +102,7 @@ const AddTourist = () => {
                 <input
                   type="text"
                   name="spotName"
-                  placeholder="Spot Name"
+                  defaultValue={spotName}
                   className="input input-bordered rounded-full"
                   required
                 />
@@ -104,7 +116,7 @@ const AddTourist = () => {
                 <input
                   type="text"
                   name="country"
-                  placeholder="Country"
+                  defaultValue={country}
                   className="input input-bordered rounded-full"
                   required
                 ></input>
@@ -118,7 +130,7 @@ const AddTourist = () => {
                 <input
                   type="text"
                   name="location"
-                  placeholder="Location"
+                  defaultValue={location}
                   className="input input-bordered rounded-full"
                   required
                 />
@@ -131,8 +143,8 @@ const AddTourist = () => {
                 </label>
                 <textarea
                   className="textarea textarea-bordered rounded-2xl"
+                  defaultValue={description}
                   name="description"
-                  placeholder="Description"
                 ></textarea>
               </div>
               <div className="form-control">
@@ -143,7 +155,7 @@ const AddTourist = () => {
                 </label>
                 <input
                   type="number"
-                  placeholder="Average Cost "
+                  defaultValue={cost}
                   name="cost"
                   className="input input-bordered rounded-full"
                   required
@@ -157,7 +169,7 @@ const AddTourist = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Seasonality"
+                  defaultValue={season}
                   name="season"
                   className="input input-bordered rounded-full"
                   required
@@ -171,7 +183,7 @@ const AddTourist = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Travel Time"
+                  defaultValue={travel}
                   name="travel"
                   className="input input-bordered rounded-full"
                   required
@@ -185,40 +197,13 @@ const AddTourist = () => {
                 </label>
                 <input
                   type="text"
+                  defaultValue={visitors}
                   name="visitors"
-                  placeholder="Visitors per Year"
                   className="input input-bordered rounded-full"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">
-                    Your Email <span className="text-orange-500">*</span>
-                  </span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  defaultValue={user.email}
-                  className="input input-bordered rounded-full"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">
-                    Your Username <span className="text-orange-500">*</span>
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  name="username"
-                  defaultValue={user.displayName}
-                  className="input input-bordered rounded-full"
-                  required
-                />
-              </div>
+
               <div className="form-control mt-6 col-span-2">
                 <button className="btn bg-green-500 text-white rounded-full">
                   Add New Spot
@@ -232,4 +217,4 @@ const AddTourist = () => {
   );
 };
 
-export default AddTourist;
+export default UpdateSpot;

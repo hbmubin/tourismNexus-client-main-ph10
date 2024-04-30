@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -62,9 +62,12 @@ const MyList = () => {
                     <td>{spot.country}</td>
                     <td>{spot.cost}</td>
                     <td className="text-end">
-                      <button className="btn  rounded-3xl text-white hover:bg-sky-600 bg-sky-500">
+                      <Link
+                        to={`/updatespot/${spot._id}`}
+                        className="btn  rounded-3xl text-white hover:bg-sky-600 bg-sky-500"
+                      >
                         Update
-                      </button>
+                      </Link>
                       <button
                         onClick={() => handleDelete(spot._id)}
                         className=" btn rounded-3xl ml-4 text-white hover:bg-orange-600 bg-orange-500"
