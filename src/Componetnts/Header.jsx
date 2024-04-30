@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { Typewriter } from "react-simple-typewriter";
 
 const Header = () => {
   const [theme, setTheme] = useState(
@@ -105,7 +106,18 @@ const Header = () => {
             </ul>
           </div>
           <a href="/" className="font-bold cursor-pointer text-2xl">
-            Tourism Nexus
+            Tourism
+            <span className="text-green-500">
+              <Typewriter
+                words={[" Nexus"]}
+                loop={Infinity}
+                cursor
+                cursorStyle="|"
+                typeSpeed={200}
+                deleteSpeed={100}
+                delaySpeed={1000}
+              />
+            </span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
