@@ -1,14 +1,15 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import SpotCard from "./SpotCard";
 
 const Home = () => {
   const spots = useLoaderData();
+  const limitedSpots = spots.slice(0, 5);
 
   const ref = useRef(null);
   const handleScroll = () => {
@@ -113,13 +114,23 @@ const Home = () => {
       </div>
       {spots ? (
         <div className="grid grid-cols-2 gap-6">
-          {spots.map((spot) => (
+          {limitedSpots.map((spot) => (
             <SpotCard key={spot._id} spot={spot}></SpotCard>
           ))}
         </div>
       ) : (
         <div> No data to show</div>
       )}
+      <div className="text-center mt-6">
+        {spots && (
+          <Link
+            to="/alltourist"
+            className="btn rounded-full  bg-green-600 hover:bg-green-500 duration-300 px-10 text-white"
+          >
+            Show All
+          </Link>
+        )}
+      </div>
       <div ref={ref} className="h-screen"></div>
     </div>
   );
