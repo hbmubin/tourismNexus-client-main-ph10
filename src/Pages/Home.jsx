@@ -4,7 +4,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import SpotCard from "./SpotCard";
 
 const Home = () => {
   const spots = useLoaderData();
@@ -26,11 +27,11 @@ const Home = () => {
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
-          className="mySwiper mb-16 h-[80vh]"
+          className="mySwiper  mb-16 h-[80vh]"
         >
           <SwiperSlide>
             <div
-              className="hero  h-full rounded-[50px] overflow-hidden"
+              className="hero border-2 border-neutral-600  h-full rounded-[50px] overflow-hidden"
               style={{
                 backgroundImage: "url(https://i.ibb.co/myqPwL4/bd.jpg)",
               }}
@@ -57,7 +58,7 @@ const Home = () => {
           </SwiperSlide>
           <SwiperSlide>
             <div
-              className="hero  h-full rounded-[50px] overflow-hidden "
+              className="hero border-2 border-neutral-600  h-full rounded-[50px] overflow-hidden "
               style={{
                 backgroundImage: "url(https://i.ibb.co/b6hfKsw/malay.jpg)",
               }}
@@ -84,7 +85,7 @@ const Home = () => {
           </SwiperSlide>
           <SwiperSlide>
             <div
-              className="hero h-full rounded-[50px] overflow-hidden"
+              className="hero border-2 border-neutral-600 h-full rounded-[50px] overflow-hidden"
               style={{
                 backgroundImage: "url(https://i.ibb.co/KGb3s5w/thai.jpg)",
               }}
@@ -110,6 +111,15 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+      {spots ? (
+        <div className="grid grid-cols-2 gap-6">
+          {spots.map((spot) => (
+            <SpotCard key={spot._id} spot={spot}></SpotCard>
+          ))}
+        </div>
+      ) : (
+        <div> No data to show</div>
+      )}
       <div ref={ref} className="h-screen"></div>
     </div>
   );

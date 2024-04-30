@@ -1,8 +1,11 @@
-import { Toaster } from "react-hot-toast";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddTourist = () => {
+  const { user } = useContext(AuthContext);
+
   const handleAddSpot = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -42,6 +45,7 @@ const AddTourist = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        e.target.reset();
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
@@ -99,19 +103,13 @@ const AddTourist = () => {
                     Country Name <span className="text-orange-500">*</span>
                   </span>
                 </label>
-                <select
+                <input
+                  type="text"
                   name="country"
-                  className="select select-bordered rounded-full w-full max-w-xs"
-                >
-                  <option value="Select" disabled>
-                    Select country
-                  </option>
-                  <option value="bangladesh">Bangladesh</option>
-                  <option value="thailand">Thailand</option>
-                  <option value="indonesia">Indonesia</option>
-                  <option value="malaysia">Malaysia</option>
-                  <option value="vietnam">Vietnam</option>
-                </select>
+                  placeholder="Country"
+                  className="input input-bordered rounded-full"
+                  required
+                ></input>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -159,18 +157,13 @@ const AddTourist = () => {
                     Seasonality <span className="text-orange-500">*</span>
                   </span>
                 </label>
-                <select
+                <input
+                  type="text"
+                  placeholder="Seasonality"
                   name="season"
-                  className="select select-bordered rounded-full w-full max-w-xs"
-                >
-                  <option value="Select" disabled>
-                    Select Season
-                  </option>
-                  <option value="winter">Winter</option>
-                  <option value="summer">Summer</option>
-                  <option value="monsoon">Monsoon</option>
-                  <option value="spring">Spring</option>
-                </select>
+                  className="input input-bordered rounded-full"
+                  required
+                />
               </div>
               <div className="form-control">
                 <label className="label">
@@ -209,7 +202,7 @@ const AddTourist = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
+                  defaultValue={user.email}
                   className="input input-bordered rounded-full"
                   required
                 />
@@ -223,7 +216,7 @@ const AddTourist = () => {
                 <input
                   type="text"
                   name="username"
-                  placeholder="Your Username"
+                  defaultValue={user.displayName}
                   className="input input-bordered rounded-full"
                   required
                 />
