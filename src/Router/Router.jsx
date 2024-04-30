@@ -10,6 +10,7 @@ import MyList from "../Pages/MyList";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DetailSpot from "../Pages/DetailSpot";
 import UpdateSpot from "../Pages/UpdateSpot";
+import Country from "../Pages/Country";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,11 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/spot/${params.id}`),
+      },
+      {
+        path: "/:name",
+        element: <Country></Country>,
+        loader: () => fetch("http://localhost:5000/spot"),
       },
     ],
   },

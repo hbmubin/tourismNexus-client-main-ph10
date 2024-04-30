@@ -6,10 +6,11 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { useRef } from "react";
 import SpotCard from "./SpotCard";
+import Countries from "./Countries";
 
 const Home = () => {
   const spots = useLoaderData();
-  const limitedSpots = spots.slice(0, 5);
+  const limitedSpots = spots.slice(0, 6);
 
   const ref = useRef(null);
   const handleScroll = () => {
@@ -51,7 +52,7 @@ const Home = () => {
                     onClick={handleScroll}
                     className="btn rounded-full bg-opacity-50 hover:bg-green-500 duration-300 px-10 hover:text-white outline-0 border-0"
                   >
-                    Explore South Asia
+                    Explore top Spot
                   </button>
                 </div>
               </div>
@@ -78,7 +79,7 @@ const Home = () => {
                     onClick={handleScroll}
                     className="btn rounded-full  bg-opacity-50 hover:bg-green-500 duration-300 px-10 hover:text-white outline-0 border-0"
                   >
-                    Explore South Asia
+                    Explore top Spot
                   </button>
                 </div>
               </div>
@@ -104,7 +105,7 @@ const Home = () => {
                     onClick={handleScroll}
                     className="btn rounded-full  bg-opacity-50 hover:bg-green-500 duration-300 px-10 hover:text-white outline-0 border-0"
                   >
-                    Explore South Asia
+                    Explore top Spot
                   </button>
                 </div>
               </div>
@@ -144,7 +145,9 @@ const Home = () => {
           </div>
           <hr className="h-[3px] w-full bg-neutral-400 mb-10 mt-4" />
         </div>
-        <div> country</div>
+        <div>
+          <Countries></Countries>
+        </div>
       </div>
     </div>
   );

@@ -23,7 +23,8 @@ const UpdateSpot = () => {
     const form = e.target;
     const photo = form.photo.value;
     const spotName = form.spotName.value;
-    const country = form.country.value;
+    const demoCountry = form.country.value;
+    const country = demoCountry.toLowerCase();
     const location = form.location.value;
     const description = form.description.value;
     const cost = form.cost.value;
@@ -53,7 +54,6 @@ const UpdateSpot = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         e.target.reset();
         if (data.modifiedCount > 0) {
           SetModifiedSpot(updatedSpot);
