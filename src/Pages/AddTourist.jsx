@@ -34,13 +34,16 @@ const AddTourist = () => {
       username,
     };
 
-    fetch("http://localhost:5000/spot", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newSpot),
-    })
+    fetch(
+      "https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newSpot),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         e.target.reset();
