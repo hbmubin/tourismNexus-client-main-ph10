@@ -7,11 +7,11 @@ const AllTourist = () => {
   const [sortedSpots, setSortedSpots] = useState([...spots]);
 
   const handleSortBy = (filter) => {
-    if (filter === "ascending") {
+    if (filter === "descending") {
       const sorted = [...spots].sort((a, b) => b.cost - a.cost);
       setSortedSpots(sorted);
     }
-    if (filter === "descending") {
+    if (filter === "ascending") {
       const sorted = [...spots].sort((a, b) => a.cost - b.cost);
       setSortedSpots(sorted);
     }

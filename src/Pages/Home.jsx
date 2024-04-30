@@ -112,26 +112,40 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      {spots ? (
-        <div className="grid grid-cols-2 gap-6">
-          {limitedSpots.map((spot) => (
-            <SpotCard key={spot._id} spot={spot}></SpotCard>
-          ))}
+      <div>
+        <div ref={ref} className="text-center text-3xl font-semibold ">
+          Best of South Asia
         </div>
-      ) : (
-        <div> No data to show</div>
-      )}
-      <div className="text-center mt-6">
-        {spots && (
-          <Link
-            to="/alltourist"
-            className="btn rounded-full  bg-green-600 hover:bg-green-500 duration-300 px-10 text-white"
-          >
-            Show All
-          </Link>
+        <hr className="h-[3px] w-full bg-neutral-400 mb-10 mt-4" />
+        {spots ? (
+          <div className="grid grid-cols-2 gap-6">
+            {limitedSpots.map((spot) => (
+              <SpotCard key={spot._id} spot={spot}></SpotCard>
+            ))}
+          </div>
+        ) : (
+          <div> No data to show</div>
         )}
+        <div className="text-center mt-6">
+          {spots && (
+            <Link
+              to="/alltourist"
+              className="btn rounded-full  bg-green-600 hover:bg-green-500 duration-300 px-10 text-white"
+            >
+              Show All
+            </Link>
+          )}
+        </div>
       </div>
-      <div ref={ref} className="h-screen"></div>
+      <div>
+        <div className="mt-24">
+          <div className="text-center text-3xl font-semibold ">
+            Best of South Asia
+          </div>
+          <hr className="h-[3px] w-full bg-neutral-400 mb-10 mt-4" />
+        </div>
+        <div> country</div>
+      </div>
     </div>
   );
 };

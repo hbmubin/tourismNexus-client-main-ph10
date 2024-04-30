@@ -26,18 +26,14 @@ const DetailSpot = () => {
             <p className="text-neutral-500">
               {location}, {country}
             </p>
-            <p>{description}</p>
+            <hr className="bg-neutral-400 w-full h-[2px] mb-4" />
+            <p className="mb-4">{description}</p>
           </div>
           <div className="flex flex-col gap-1  text-lg">
             <div>Average Cost : {cost}$</div>
             <div>Seasonality : {season}</div>
             <div>Travel Time : {travel}</div>
             <div>Visitors per Year : {visitors}</div>
-          </div>
-          <div className="card-actions">
-            <button className="btn bg-green-500 hover:bg-green-600">
-              Update
-            </button>
           </div>
         </div>
       </div>
