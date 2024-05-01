@@ -21,12 +21,9 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:5000/spot/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

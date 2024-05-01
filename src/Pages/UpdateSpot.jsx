@@ -45,16 +45,13 @@ const UpdateSpot = () => {
     };
     console.log(updatedSpot);
 
-    fetch(
-      `https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedSpot),
-      }
-    )
+    fetch(`http://localhost:5000/spot/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedSpot),
+    })
       .then((res) => res.json())
       .then((data) => {
         e.target.reset();

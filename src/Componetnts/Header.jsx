@@ -80,15 +80,10 @@ const Header = () => {
   return (
     <div>
       <Toaster></Toaster>
-      <div className={`navbar lg:py-4 ${tab ? " pb-64" : ""} `}>
+      <div className={`navbar lg:py-4 ${tab ? " pb-60" : ""}`}>
         <div className="navbar-start">
-          <div className="dropdown ">
-            <div
-              onClick={() => check(!tab)}
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost rounded-2xl lg:hidden"
-            >
+          <details className="dropdown">
+            <summary onClick={() => check(!tab)} className="m-1 btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -103,17 +98,11 @@ const Header = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </div>
-            <ul
-              style={{
-                zIndex: 99,
-              }}
-              tabIndex={0}
-              className="menu menu-sm  dropdown-content mt-3 z-[9] p-2 shadow bg-base-100 rounded-box gap-2 w-52"
-            >
+            </summary>
+            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               {links}
             </ul>
-          </div>
+          </details>
 
           <a href="/" className="font-bold cursor-pointer text-2xl">
             Tourism

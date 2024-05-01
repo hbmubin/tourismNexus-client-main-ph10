@@ -21,10 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch(
-            "https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot"
-          ),
+        loader: () => fetch("http://localhost:5000/spot"),
       },
       {
         path: "/login",
@@ -37,10 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/alltourist",
         element: <AllTourist></AllTourist>,
-        loader: () =>
-          fetch(
-            "https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot"
-          ),
+        loader: () => fetch("http://localhost:5000/spot"),
       },
       {
         path: "/addtourist",
@@ -57,10 +51,7 @@ const router = createBrowserRouter([
             <MyList></MyList>
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch(
-            "https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot"
-          ),
+        loader: () => fetch("http://localhost:5000/spot"),
       },
       {
         path: "/detailspot/:id",
@@ -70,9 +61,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot/${params.id}`
-          ),
+          fetch(`http://localhost:5000/spot/${params.id}`),
       },
       {
         path: "/updatespot/:id",
@@ -82,17 +71,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot/${params.id}`
-          ),
+          fetch(`http://localhost:5000/spot/${params.id}`),
       },
       {
         path: "/:name",
         element: <Country></Country>,
-        loader: () =>
-          fetch(
-            "https://tourism-nexus-server-assign-10-ogpmnb5xw-hbmubins-projects.vercel.app/spot"
-          ),
+        loader: () => fetch("http://localhost:5000/spot"),
       },
     ],
   },
