@@ -83,7 +83,10 @@ const Header = () => {
       <div className={`navbar lg:py-4 ${tab ? " pb-60" : ""}`}>
         <div className="navbar-start">
           <details className="dropdown">
-            <summary onClick={() => check(!tab)} className="m-1 btn">
+            <summary
+              onClick={() => check(!tab)}
+              className="m-1 btn btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
