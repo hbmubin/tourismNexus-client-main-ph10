@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 const MyList = () => {
   const spots = useLoaderData();
   const { user } = useContext(AuthContext);
-  const [modifiedMyList, setModifiedMyList] = useState(spots);
 
   const myList = spots.filter((spot) => spot.email == user.email);
+  const [modifiedMyList, setModifiedMyList] = useState(myList);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -28,14 +28,31 @@ const MyList = () => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
+              const updatedList = modifiedMyList.filter(
+                (spot) => spot._id !== _id
+              );
+              setModifiedMyList(updatedList);
+
               Swal.fire({
                 title: "Deleted!",
                 text: "Your spot has been deleted.",
                 icon: "success",
               });
-              const remaining = spots.filter((spot) => spot._id !== _id);
-              setModifiedMyList(remaining);
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Failed to delete the spot.",
+                icon: "error",
+              });
             }
+          })
+          .catch((error) => {
+            console.error("Error deleting spot:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "Failed to delete the spot. Please try again later.",
+              icon: "error",
+            });
           });
       }
     });
