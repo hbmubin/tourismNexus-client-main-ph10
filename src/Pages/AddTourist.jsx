@@ -34,7 +34,7 @@ const AddTourist = () => {
       username,
     };
 
-    fetch("http://localhost:5000/spot", {
+    fetch("https://tourism-nexus-server-assign-10.vercel.app/spot", {
       method: "POST",
       headers: {
         "content-type": "application/json",

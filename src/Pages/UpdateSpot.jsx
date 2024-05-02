@@ -45,7 +45,7 @@ const UpdateSpot = () => {
     };
     console.log(updatedSpot);
 
-    fetch(`http://localhost:5000/spot/${_id}`, {
+    fetch(`https://tourism-nexus-server-assign-10.vercel.app/spot/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
