@@ -6,7 +6,7 @@ const AboutUs = () => {
       <div className="lg:flex  gap-6 max-h-full">
         <div className="flex justify-center lg:mb-0 mb-6">
           <img
-            src="/public/letter-n-alphabet-natural-green-icons-leaf-logo-free-vector2.jpg"
+            src="/letter-n-alphabet-natural-green-icons-leaf-logo-free-vector2.jpg"
             alt="About Us"
             className=" rounded-lg w-72 "
           />
