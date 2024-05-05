@@ -2,7 +2,7 @@
 
 Tourism Nexus is a web platform that allows users to explore tourist spots across different countries in South Asia.
 
-Live Site: https://torism-nexus.netlify.app/
+Live Site: https://tourism-nexus.netlify.app/
 
 ## Key Features
 
